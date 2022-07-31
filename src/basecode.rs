@@ -1,4 +1,3 @@
-use std::error::Error;
 use ash::{vk, Entry};
 use winit::{
     event::{Event, WindowEvent},
@@ -27,7 +26,7 @@ impl HelloTriangleApplication {
             window : window,
         }
     }
-    pub fn run(self) -> Result<(), Box<dyn Error>>  {
+    pub fn run(self) {
         self.event_loop.run(move |event, _, control_flow| {
             *control_flow = ControlFlow::Wait;
     
