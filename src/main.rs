@@ -1,6 +1,6 @@
-mod basecode;
+mod instance;
 
-use basecode::HelloTriangleApplication;
+use instance::HelloTriangleApplication;
 
 fn main() {
     let app = HelloTriangleApplication::new();
