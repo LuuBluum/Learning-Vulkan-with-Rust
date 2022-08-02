@@ -1,6 +1,6 @@
-mod instance;
+mod devices;
 
-use instance::HelloTriangleApplication;
+use devices::HelloTriangleApplication;
 
 fn main() {
     let app = HelloTriangleApplication::new();
