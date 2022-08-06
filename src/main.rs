@@ -1,6 +1,6 @@
-mod devices;
+mod surfaces;
 
-use devices::HelloTriangleApplication;
+use surfaces::HelloTriangleApplication;
 
 fn main() {
     let app = HelloTriangleApplication::new();
