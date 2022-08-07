@@ -1,17 +1,17 @@
 use ash::{vk, Entry};
 use winit::{
+    dpi::PhysicalSize,
     event::{Event, WindowEvent},
     event_loop::{ControlFlow, EventLoop},
     window::WindowBuilder,
-    dpi::PhysicalSize,
 };
 
-const WIDTH : u32 = 800;
-const HEIGHT : u32 = 600;
+const WIDTH: u32 = 800;
+const HEIGHT: u32 = 600;
 
 pub struct HelloTriangleApplication {
-    event_loop : winit::event_loop::EventLoop<()>,
-    window : winit::window::Window,
+    event_loop: winit::event_loop::EventLoop<()>,
+    window: winit::window::Window,
 }
 
 impl HelloTriangleApplication {
@@ -20,16 +20,17 @@ impl HelloTriangleApplication {
         let window = WindowBuilder::new()
             .with_resizable(false)
             .with_inner_size(PhysicalSize::new(WIDTH, HEIGHT))
-            .build(&event_loop).unwrap();
+            .build(&event_loop)
+            .unwrap();
         Self {
-            event_loop : event_loop,
-            window : window,
+            event_loop: event_loop,
+            window: window,
         }
     }
     pub fn run(self) {
         self.event_loop.run(move |event, _, control_flow| {
             *control_flow = ControlFlow::Wait;
-    
+
             match event {
                 Event::WindowEvent {
                     event: WindowEvent::CloseRequested,
