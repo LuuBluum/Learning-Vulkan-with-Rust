@@ -1,6 +1,6 @@
-mod surfaces;
+mod swapchain;
 
-use surfaces::HelloTriangleApplication;
+use swapchain::HelloTriangleApplication;
 
 fn main() {
     let app = HelloTriangleApplication::new();
