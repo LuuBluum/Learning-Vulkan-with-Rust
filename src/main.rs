@@ -1,6 +1,6 @@
-mod swapchain;
+mod graphicspipeline;
 
-use swapchain::HelloTriangleApplication;
+use graphicspipeline::HelloTriangleApplication;
 
 fn main() {
     let app = HelloTriangleApplication::new();
