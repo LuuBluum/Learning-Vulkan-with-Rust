@@ -108,63 +108,6 @@ pub struct HelloTriangleApplication {
 
 impl VulkanDetails {
     pub fn new(window: &winit::window::Window) -> Self {
-        let (
-            entry,
-            instance,
-            debug_messenger,
-            surface,
-            physical_device,
-            device,
-            graphics_queue,
-            present_queue,
-            swap_chain,
-            swap_chain_images,
-            swap_chain_image_format,
-            swap_chain_extent,
-            swap_chain_image_views,
-            render_pass,
-            pipeline_layout,
-            graphics_pipeline,
-        ) = VulkanDetails::init_vulkan(&window);
-        Self {
-            entry,
-            instance,
-            debug_messenger,
-            surface,
-            physical_device,
-            device,
-            graphics_queue,
-            present_queue,
-            swap_chain,
-            swap_chain_images,
-            swap_chain_image_format,
-            swap_chain_extent,
-            swap_chain_image_views,
-            render_pass,
-            pipeline_layout,
-            graphics_pipeline,
-        }
-    }
-    fn init_vulkan(
-        window: &winit::window::Window,
-    ) -> (
-        ash::Entry,
-        ash::Instance,
-        vk::DebugUtilsMessengerEXT,
-        vk::SurfaceKHR,
-        vk::PhysicalDevice,
-        ash::Device,
-        vk::Queue,
-        vk::Queue,
-        vk::SwapchainKHR,
-        Vec<vk::Image>,
-        vk::Format,
-        vk::Extent2D,
-        Vec<vk::ImageView>,
-        vk::RenderPass,
-        vk::PipelineLayout,
-        vk::Pipeline,
-    ) {
         let entry = Entry::linked();
         let instance = VulkanDetails::create_instance(&entry).unwrap();
         let debug_messenger = VulkanDetails::create_debug_messenger(&entry, &instance);
@@ -188,7 +131,7 @@ impl VulkanDetails {
                 &device,
                 &surface,
             );
-        let image_views = VulkanDetails::create_image_views(
+        let swap_chain_image_views = VulkanDetails::create_image_views(
             &device,
             &swap_chain_images,
             &swap_chain_image_format,
@@ -196,7 +139,7 @@ impl VulkanDetails {
         let render_pass = VulkanDetails::create_render_pass(&device, &swap_chain_image_format);
         let (pipeline_layout, graphics_pipeline) =
             VulkanDetails::create_graphics_pipeline(&device, &render_pass);
-        (
+        Self {
             entry,
             instance,
             debug_messenger,
@@ -209,11 +152,11 @@ impl VulkanDetails {
             swap_chain_images,
             swap_chain_image_format,
             swap_chain_extent,
-            image_views,
+            swap_chain_image_views,
             render_pass,
             pipeline_layout,
             graphics_pipeline,
-        )
+        }
     }
     fn create_instance(entry: &ash::Entry) -> VkResult<ash::Instance> {
         if !VulkanDetails::check_validation_layer_support(&entry) {
