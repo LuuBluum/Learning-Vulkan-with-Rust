@@ -127,22 +127,22 @@ impl VulkanDetails {
             graphics_pipeline,
         ) = VulkanDetails::init_vulkan(&window);
         Self {
-            entry: entry,
-            instance: instance,
-            debug_messenger: debug_messenger,
-            surface: surface,
-            physical_device: physical_device,
-            device: device,
-            graphics_queue: graphics_queue,
-            present_queue: present_queue,
-            swap_chain: swap_chain,
-            swap_chain_images: swap_chain_images,
-            swap_chain_image_format: swap_chain_image_format,
-            swap_chain_extent: swap_chain_extent,
-            swap_chain_image_views: swap_chain_image_views,
-            render_pass: render_pass,
-            pipeline_layout: pipeline_layout,
-            graphics_pipeline: graphics_pipeline,
+            entry,
+            instance,
+            debug_messenger,
+            surface,
+            physical_device,
+            device,
+            graphics_queue,
+            present_queue,
+            swap_chain,
+            swap_chain_images,
+            swap_chain_image_format,
+            swap_chain_extent,
+            swap_chain_image_views,
+            render_pass,
+            pipeline_layout,
+            graphics_pipeline,
         }
     }
     fn init_vulkan(
@@ -826,9 +826,9 @@ impl HelloTriangleApplication {
         let (event_loop, window) = HelloTriangleApplication::init_window().unwrap();
         let vulkan_details = VulkanDetails::new(&window);
         Self {
-            event_loop: event_loop,
-            window: window,
-            vulkan_details: vulkan_details,
+            event_loop,
+            window,
+            vulkan_details,
         }
     }
     pub fn run(mut self) -> ! {
