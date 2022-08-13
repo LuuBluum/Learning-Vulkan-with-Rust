@@ -1,16 +1,16 @@
-use ash::extensions::ext::DebugUtils;
-use ash::extensions::khr::Surface;
-use ash::extensions::khr::Swapchain;
-use ash::extensions::khr::{AndroidSurface, WaylandSurface, Win32Surface, XcbSurface, XlibSurface};
+use ash::extensions::{
+    ext::DebugUtils,
+    khr::Surface,
+    khr::Swapchain,
+    khr::{AndroidSurface, WaylandSurface, Win32Surface, XcbSurface, XlibSurface},
+};
 use ash::prelude::*;
 use ash::{vk, Entry};
 use raw_window_handle::HasRawWindowHandle;
 use std::collections::HashSet;
-use std::ffi::c_void;
-use std::ffi::CStr;
+use std::ffi::{c_void, CStr};
 use std::fs;
 use std::ptr;
-use std::ptr::null;
 use std::vec::Vec;
 use winit::{
     dpi::PhysicalSize,
@@ -667,9 +667,9 @@ impl VulkanDetails {
         let vertex_input_info = vk::PipelineVertexInputStateCreateInfo {
             s_type: vk::StructureType::PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO,
             vertex_binding_description_count: 0,
-            p_vertex_binding_descriptions: null(),
+            p_vertex_binding_descriptions: ptr::null(),
             vertex_attribute_description_count: 0,
-            p_vertex_attribute_descriptions: null(),
+            p_vertex_attribute_descriptions: ptr::null(),
             ..Default::default()
         };
 
@@ -707,7 +707,7 @@ impl VulkanDetails {
             sample_shading_enable: vk::FALSE,
             rasterization_samples: vk::SampleCountFlags::TYPE_1,
             min_sample_shading: 1.0,
-            p_sample_mask: null(),
+            p_sample_mask: ptr::null(),
             alpha_to_coverage_enable: vk::FALSE,
             alpha_to_one_enable: vk::FALSE,
             ..Default::default()
@@ -749,9 +749,9 @@ impl VulkanDetails {
         let pipeline_layout_info = vk::PipelineLayoutCreateInfo {
             s_type: vk::StructureType::PIPELINE_LAYOUT_CREATE_INFO,
             set_layout_count: 0,
-            p_set_layouts: null(),
+            p_set_layouts: ptr::null(),
             push_constant_range_count: 0,
-            p_push_constant_ranges: null(),
+            p_push_constant_ranges: ptr::null(),
             ..Default::default()
         };
 
@@ -770,7 +770,7 @@ impl VulkanDetails {
             p_viewport_state: &viewport_state,
             p_rasterization_state: &rasterizer,
             p_multisample_state: &multisampling,
-            p_depth_stencil_state: null(),
+            p_depth_stencil_state: ptr::null(),
             p_color_blend_state: &color_blending,
             p_dynamic_state: &dynamic_state,
             layout: pipeline_layout,
