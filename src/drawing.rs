@@ -83,7 +83,7 @@ impl SwapchainSupportDetails {
     }
 }
 
-pub struct VulkanDetails {
+struct VulkanDetails {
     entry: ash::Entry,
     instance: ash::Instance,
     debug_messenger: vk::DebugUtilsMessengerEXT,
