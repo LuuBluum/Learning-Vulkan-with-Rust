@@ -1,6 +1,6 @@
-mod graphicspipeline;
+mod drawing;
 
-use graphicspipeline::HelloTriangleApplication;
+use drawing::HelloTriangleApplication;
 
 fn main() {
     let app = HelloTriangleApplication::new();
