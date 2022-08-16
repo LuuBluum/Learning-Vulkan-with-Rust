@@ -198,13 +198,13 @@ impl VulkanDetails {
         }
         let app_info = vk::ApplicationInfo {
             s_type: vk::StructureType::APPLICATION_INFO,
-            p_application_name: unsafe {
-                CStr::from_bytes_with_nul_unchecked("Hello Triangle\0".as_bytes()).as_ptr()
-            },
+            p_application_name: CStr::from_bytes_with_nul("Hello Triangle\0".as_bytes())
+                .unwrap()
+                .as_ptr(),
             application_version: vk::make_api_version(0, 1, 0, 0),
-            p_engine_name: unsafe {
-                CStr::from_bytes_with_nul_unchecked("No Engine\0".as_bytes()).as_ptr()
-            },
+            p_engine_name: CStr::from_bytes_with_nul("No Engine\0".as_bytes())
+                .unwrap()
+                .as_ptr(),
             engine_version: vk::make_api_version(0, 1, 0, 0),
             api_version: vk::make_api_version(0, 1, 0, 0),
             ..Default::default()
