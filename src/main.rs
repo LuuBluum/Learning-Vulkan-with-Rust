@@ -1,6 +1,6 @@
-mod drawing;
+mod vertexbuffer;
 
-use drawing::HelloTriangleApplication;
+use vertexbuffer::HelloTriangleApplication;
 
 fn main() {
     let app = HelloTriangleApplication::new();
