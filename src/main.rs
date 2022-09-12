@@ -1,6 +1,6 @@
-mod vertexbuffer;
+mod uniformbuffer;
 
-use vertexbuffer::HelloTriangleApplication;
+use uniformbuffer::HelloTriangleApplication;
 
 fn main() {
     let app = HelloTriangleApplication::new();
