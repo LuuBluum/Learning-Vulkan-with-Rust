@@ -1277,10 +1277,7 @@ impl VulkanDetails {
             };
 
             unsafe {
-                device.update_descriptor_sets(
-                    [descriptor_write].as_ref(),
-                    &[] as &[vk::CopyDescriptorSet],
-                );
+                device.update_descriptor_sets([descriptor_write].as_ref(), &[]);
             }
         }
         descriptor_sets
